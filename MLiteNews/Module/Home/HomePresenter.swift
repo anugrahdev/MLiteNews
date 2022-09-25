@@ -10,8 +10,6 @@ import Foundation
 
 class HomePresenter: HomePresenterProtocol {
 
-    
-    
     // MARK: Properties
     weak var view: HomeViewProtocol?
     let interactor: HomeInteractorProtocol
@@ -50,6 +48,10 @@ class HomePresenter: HomePresenterProtocol {
         newsArticleList = []
         totalPage = 1
         currentPage = 1
+    }
+    
+    func moveToDetail(url: URL, title: String) {
+        wireframe.pushToDetail(url: url, title: title)
     }
 
 }

@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var homeTableView: UITableView!
     var presenter: HomePresenterProtocol?
     let searchController = UISearchController()
+    let refreshControl = UIRefreshControl()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -31,6 +32,25 @@ class HomeViewController: UIViewController {
     // MARK: - Setup
     private func setupView() {
         setupTableView()
+        setupRefreshView()
+        NotificationCenter.default.addObserver(self, selector: #selector(showNoInternetAlert), name: .getNotification(with: .offline), object: nil)
+    }
+    
+    @objc private func showNoInternetAlert() {
+        showNoInternetConnectionAlert()
+    }
+    
+    func setupRefreshView() {
+        refreshControl.attributedTitle = NSAttributedString(string: "Tarik untuk memperbarui")
+        refreshControl.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged)
+        homeTableView.addSubview(refreshControl)
+    }
+    
+    @objc func refreshData(_ sender: AnyObject) {
+        presenter?.resetData()
+        self.refreshControl.endRefreshing()
+        self.homeTableView.reloadData()
+        presenter?.fetchHomeNews()
     }
     
     private func setupTableView() {
@@ -39,6 +59,7 @@ class HomeViewController: UIViewController {
         homeTableView.register(CategoryTableViewCell.nib(), forHeaderFooterViewReuseIdentifier: CategoryTableViewCell.identifier)
         homeTableView.delegate = self
         homeTableView.dataSource = self
+        homeTableView.showsVerticalScrollIndicator = false
     }
     
     private func setupSearchController() {
@@ -83,7 +104,15 @@ extension HomeViewController: HomeViewProtocol {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter?.newsArticleList?.count ?? 0
+        if let count = presenter?.newsArticleList?.count, let isLoading = presenter?.isLoadData {
+            if count == 0 && !isLoading {
+                tableView.setEmptyView(title: StringResources.dataNotFound)
+            } else {
+                tableView.restore()
+            }
+            return count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -105,6 +134,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         else {
             return nil
         }
+        headerView.backgroundColor = UIColor.clear
         headerView.delegate = self
         headerView.categories = presenter?.categoryList
         return headerView
@@ -127,6 +157,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 presenter?.currentPage = nextPage
                 presenter?.fetchHomeNews()
             }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let stringUrl = presenter?.newsArticleList?[indexPath.row].url, let url = URL(string: stringUrl), let title = presenter?.newsArticleList?[indexPath.row].title {
+            presenter?.moveToDetail(url: url, title: title)
         }
     }
     

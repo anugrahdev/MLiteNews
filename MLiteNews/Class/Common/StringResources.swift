@@ -15,7 +15,7 @@ struct StringResources {
     static let errorLoadData = "An error occurred while loading data"
     static let backText = "Back"
     static let emptyData = "Empty Data"
-    static let cardNotFound = "Card not found"
+    static let dataNotFound = "Sorry, no result found :("
     static let nilTestPlaceholder = "Unknown"
     
 }

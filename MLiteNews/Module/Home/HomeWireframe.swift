@@ -56,6 +56,12 @@ class HomeWireframe: HomeWireframeProtocol {
         controller?.navigationController?.pushViewController(viewController, animated: true)
     }
 
+    func pushToDetail(url: URL, title: String) {
+        let router = resolver.resolve(Router.self)
+        let viewController = router.setupDetailViewController(url: url, title: title)
+        controller?.navigationController?.pushViewController(viewController, animated: true)
+    }
+
 }
 
 extension Router {

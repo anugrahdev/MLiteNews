@@ -35,7 +35,9 @@ class ArticleTableViewCell: UITableViewCell, TableViewCellProtocol {
         articleImage.kf.setImage(with: URL(string: data.urlToImage ?? ""), placeholder: UIImage(named: "placeholder"))
         articleTitleLabel.text = data.title
         articleDescLabel.text = data.articleDescription
-        articlePublisherTimeLabel.text = "\(data.source?.name ?? "") - \(data.publishedAt ?? "")"
+        if let source = data.source?.name, let publishedAt = data.publishedAt, let formattedDate = publishedAt.toDate()?.toFormattedDate() {
+            articlePublisherTimeLabel.text = "\(source) - \(formattedDate)"
+        }
     }
     
 }

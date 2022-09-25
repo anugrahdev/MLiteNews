@@ -30,6 +30,7 @@ class SourceTableViewCell: UITableViewCell, TableViewCellProtocol {
         sourceCategoryLabel.text = data.category
         sourceNameLabel.text = data.name
         sourceInitialLabel.text = data.name?.initials
+        sourceInitialLabel.makeLabelShadow()
         sourceNameVIew.backgroundColor = data.bgColor
     }
     

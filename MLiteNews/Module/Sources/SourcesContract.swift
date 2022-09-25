@@ -16,10 +16,13 @@ protocol SourcesPresenterProtocol: BasePresenterProtocol {
     var sourcesResult: [SourceModel]? { get set }
     var sourcesList: [SourceModel]? { get set }
     var category: String { get set }
+    var isLoadData: Bool { get set }
+
     func fetchSources()
     func moveToNewsBySource(with source: SourceModel)
     func filterSource(query: String)
     func resetResult()
+    func resetData()
 }
 
 protocol SourcesWireframeProtocol: BaseWireframeProtocol {

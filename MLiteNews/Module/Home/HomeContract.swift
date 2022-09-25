@@ -23,11 +23,12 @@ protocol HomePresenterProtocol: BasePresenterProtocol {
     func resetData()
     func fetchHomeNews()
     func moveToSourcesView(category: String)
-    
+    func moveToDetail(url: URL, title: String)
 }
 
 protocol HomeWireframeProtocol: BaseWireframeProtocol {
     func pushToSourcesView(category: String)
+    func pushToDetail(url: URL, title: String)
 }
 
 protocol HomeInteractorProtocol: BaseInteractorProtocol {

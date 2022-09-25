@@ -16,7 +16,7 @@ class RestApiServices {
     
     func request<T: Codable>(url: String, params: [String: Any], success: @escaping (T) -> Void, failure: @escaping (NSError) -> Void) {
         let headers: HTTPHeaders = [
-            "x-api-key": "11dc6c0b1fc14ae5969b10875ddacb22"
+            "x-api-key": "51683d9422a64216bfa9d2dfcceeda7d"
         ]
         
         AF.request(url, method: .get, parameters: params, headers: headers)

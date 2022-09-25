@@ -18,12 +18,14 @@ class SourcesPresenter: SourcesPresenterProtocol {
     var sourcesList: [SourceModel]?
     var sourcesResult: [SourceModel]?
     var category: String
-    
+    var isLoadData: Bool
+
     init(interactor: SourcesInteractorProtocol, wireframe: SourcesWireframeProtocol, category: String) {
         self.interactor = interactor
         self.wireframe = wireframe
         self.sourcesList = []
         self.category = category
+        self.isLoadData = true
     }
     
     func fetchSources() {
@@ -53,6 +55,10 @@ class SourcesPresenter: SourcesPresenterProtocol {
         self.sourcesList = sourcesResult
     }
     
+    func resetData() {
+        self.sourcesList = []
+    }
+    
 }
 
 extension SourcesPresenter: SourcesInteractorDelegate {
@@ -64,6 +70,7 @@ extension SourcesPresenter: SourcesInteractorDelegate {
             self?.wireframe.setLoadingIndicator(isHidden: true)
             self?.view?.reloadData()
         }
+        isLoadData = false
     }
     
     func serviceRequestDidFail(_ error: NSError) {

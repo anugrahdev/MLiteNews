@@ -20,20 +20,33 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8OE-gx-1hz">
                         <rect key="frame" x="0.0" y="0.0" width="311" height="92"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lho-Wk-bzx">
-                                <rect key="frame" x="135" y="26" width="41.5" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="ylo-b0-C7W"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lho-Wk-bzx" customClass="PaddingLabel" customModule="MLiteNews" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="311" height="92"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
-                            <constraint firstItem="lho-Wk-bzx" firstAttribute="centerX" secondItem="8OE-gx-1hz" secondAttribute="centerX" id="Hen-3V-nhh"/>
-                            <constraint firstItem="lho-Wk-bzx" firstAttribute="centerY" secondItem="8OE-gx-1hz" secondAttribute="centerY" id="Lcu-He-dJY"/>
+                            <constraint firstItem="lho-Wk-bzx" firstAttribute="leading" secondItem="8OE-gx-1hz" secondAttribute="leading" id="8Di-Dh-nl2"/>
+                            <constraint firstItem="lho-Wk-bzx" firstAttribute="top" secondItem="8OE-gx-1hz" secondAttribute="top" id="9uW-VP-P20"/>
+                            <constraint firstAttribute="trailing" secondItem="lho-Wk-bzx" secondAttribute="trailing" id="A67-LN-GKj"/>
+                            <constraint firstAttribute="bottom" secondItem="lho-Wk-bzx" secondAttribute="bottom" id="DoV-39-Dt9"/>
                         </constraints>
                     </view>
                 </subviews>

@@ -54,6 +54,8 @@ extension CategoryTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
         }
         if let data = categories?[indexPath.row] {
             cell.configure(with: data)
+            cell.makeCardCorner()
+            cell.makeCardShadow(opacity: 0.5)
         }
         cell.layoutIfNeeded()
         return cell
@@ -83,7 +85,7 @@ extension CategoryTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (SizeUtils.shared.screenWidth/3) - 13
-        let height = CGFloat(405)
+        let height = CGFloat(45)
         return .init(width: width, height: height)
     }
     

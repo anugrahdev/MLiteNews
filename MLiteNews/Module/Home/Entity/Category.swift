@@ -8,11 +8,11 @@
 import Foundation
 
 enum Category: String, CaseIterable {
-    case Business
-    case Entertainment
     case General
+    case Sports
+    case Business
     case Health
     case Science
-    case Sports
     case Technology
+    case Entertainment
 }

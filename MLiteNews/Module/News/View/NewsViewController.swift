@@ -16,7 +16,8 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var newsTableView: UITableView!
     
     let searchController = UISearchController()
-    
+    let refreshControl = UIRefreshControl()
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,20 @@ class NewsViewController: UIViewController {
     // MARK: - Setup
     private func setupView() {
         setupTableView()
+        setupRefreshView()
+    }
+    
+    func setupRefreshView() {
+        refreshControl.attributedTitle = NSAttributedString(string: "Tarik untuk memperbarui")
+        refreshControl.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged)
+        newsTableView.addSubview(refreshControl)
+    }
+    
+    @objc func refreshData(_ sender: AnyObject) {
+        presenter?.resetData()
+        self.refreshControl.endRefreshing()
+        self.newsTableView.reloadData()
+        presenter?.fetchNews()
     }
     
     private func setupTableView() {
@@ -83,7 +98,7 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = presenter?.newsArticleList?.count, let isLoading = presenter?.isLoadData {
             if count == 0 && !isLoading {
-                tableView.setEmptyView(title: "No result found")
+                tableView.setEmptyView(title: StringResources.dataNotFound)
             } else {
                 tableView.restore()
             }

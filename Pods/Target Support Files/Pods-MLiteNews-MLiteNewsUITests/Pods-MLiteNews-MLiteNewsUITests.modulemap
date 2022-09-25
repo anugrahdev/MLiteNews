@@ -1,0 +1,6 @@
+framework module Pods_MLiteNews_MLiteNewsUITests {
+  umbrella header "Pods-MLiteNews-MLiteNewsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

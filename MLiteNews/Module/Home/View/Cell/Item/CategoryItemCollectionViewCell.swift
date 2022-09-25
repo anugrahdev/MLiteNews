@@ -20,10 +20,16 @@ class CategoryItemCollectionViewCell: UICollectionViewCell, CollectionViewCellPr
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        bgView.layer.borderWidth = 1
+        bgView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+        bgView.makeCardShadow(opacity: 0.5)
+        bgView.makeCardCorner()
+        bgView.clipsToBounds = true
     }
     
-    func configure(with data: Category) {
-        categoryLabel.text = data.rawValue
+    func configure(with data: CategoryModel) {
+        categoryLabel.text = data.name
+        bgView.backgroundColor = data.color
     }
 
 }

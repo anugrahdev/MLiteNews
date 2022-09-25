@@ -9,45 +9,72 @@
 import Foundation
 
 class HomePresenter: HomePresenterProtocol {
+
+    
     
     // MARK: Properties
     weak var view: HomeViewProtocol?
     let interactor: HomeInteractorProtocol
     let wireframe: HomeWireframeProtocol
     
-    var newsList: [ArticleModel]?
-    var homeComponent: [HomeComponent]
+    var newsArticleList: [ArticleModel]?
+    var categoryList: [CategoryModel]
+    var searchQuery: String
+    var currentPage: Int
+    let newsPerPage = 5
+    var totalPage: Int
+    var isLoadData: Bool
 
     init(interactor: HomeInteractorProtocol, wireframe: HomeWireframeProtocol) {
         self.interactor = interactor
         self.wireframe = wireframe
-        homeComponent = [.category, .news]
+        self.newsArticleList = []
+        self.categoryList = Category.allCases.map { CategoryModel(name: $0.rawValue) }
+        self.totalPage = 1
+        self.currentPage = 1
+        self.isLoadData = true
+        self.searchQuery = ""
     }
     
     func fetchHomeNews() {
-        interactor.getHomeNews()
+        wireframe.setLoadingIndicator(isHidden: false)
+        let request = NewsRequest(pageSize: newsPerPage, page: currentPage, q: searchQuery, language: "en")
+        interactor.getHomeNews(request: request)
     }
     
     func moveToSourcesView(category: String) {
         wireframe.pushToSourcesView(category: category)
     }
+    
+    func resetData() {
+        newsArticleList = []
+        totalPage = 1
+        currentPage = 1
+    }
+
 }
 
 extension HomePresenter: HomeInteractorDelegate {
     
     func getHomeNewsDidSuccess(result: NewsModel?) {
-        newsList = result?.articles
+        newsArticleList?.append(contentsOf: result?.articles ?? [])
+        if let totalCount = result?.totalResults {
+            var dataCurrentPage: Double = Double(totalCount / newsPerPage)
+            dataCurrentPage.round(.up)
+            totalPage = Int(dataCurrentPage)
+        }
         DispatchQueue.main.async { [weak self] in
+            self?.wireframe.setLoadingIndicator(isHidden: true)
             self?.view?.reloadData()
         }
+        isLoadData = false
     }
     
     func serviceRequestDidFail(_ error: NSError) {
-        
-    }
-    
-    func userUnAuthorized() {
-        
+        DispatchQueue.main.async { [weak self] in
+            self?.wireframe.setLoadingIndicator(isHidden: true)
+            self?.wireframe.showErrorAlert(error.localizedDescription)
+        }
     }
     
 }

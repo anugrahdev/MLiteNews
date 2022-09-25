@@ -13,9 +13,14 @@ protocol HomeViewProtocol: BaseViewProtocol {
 }
 
 protocol HomePresenterProtocol: BasePresenterProtocol {
-    var newsList: [ArticleModel]? { set get }
-    var homeComponent: [HomeComponent] { get set }
-
+    var newsArticleList: [ArticleModel]? { set get }
+    var categoryList: [CategoryModel] { get set }
+    var totalPage: Int { get }
+    var currentPage: Int { get set }
+    var isLoadData: Bool { get set }
+    var searchQuery: String { get set }
+    
+    func resetData()
     func fetchHomeNews()
     func moveToSourcesView(category: String)
     
@@ -26,7 +31,7 @@ protocol HomeWireframeProtocol: BaseWireframeProtocol {
 }
 
 protocol HomeInteractorProtocol: BaseInteractorProtocol {
-    func getHomeNews()
+    func getHomeNews(request: NewsRequest)
 }
 
 protocol HomeInteractorDelegate: BaseInteractorDelegate {

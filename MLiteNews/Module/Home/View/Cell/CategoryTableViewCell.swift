@@ -12,7 +12,7 @@ protocol CategoryTableViewCellDelegate: AnyObject {
 }
 
 
-class CategoryTableViewCell: UITableViewCell {
+class CategoryTableViewCell: UITableViewHeaderFooterView {
 
     static var identifier: String = "CategoryTableViewCell"
 
@@ -28,7 +28,7 @@ class CategoryTableViewCell: UITableViewCell {
         setupCollection()
     }
     
-    var categories: [Category]? {
+    var categories: [CategoryModel]? {
         didSet {
             categoriesCollectionView.reloadData()
         }
@@ -52,7 +52,6 @@ extension CategoryTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryItemCollectionViewCell.identifier, for: indexPath) as? CategoryItemCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.makeCircleCorner()
         if let data = categories?[indexPath.row] {
             cell.configure(with: data)
         }
@@ -62,7 +61,7 @@ extension CategoryTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         var offset = targetContentOffset.pointee
-        let width = (SizeUtils.shared.screenWidth/2) - 6
+        let width = (SizeUtils.shared.screenWidth/3) - 8
 
         let index = offset.x / (width)
         let roundedIndex = round(index)
@@ -75,7 +74,7 @@ extension CategoryTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let category = categories?[indexPath.row] {
-            delegate?.categoryDidTapped(category: category.rawValue)
+            delegate?.categoryDidTapped(category: category.name)
         }
     }
 }
@@ -83,8 +82,8 @@ extension CategoryTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
 extension CategoryTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (SizeUtils.shared.screenWidth/3)
-        let height = CGFloat(250)
+        let width = (SizeUtils.shared.screenWidth/3) - 13
+        let height = CGFloat(405)
         return .init(width: width, height: height)
     }
     

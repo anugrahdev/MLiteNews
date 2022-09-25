@@ -14,8 +14,8 @@ class NewsInteractor: NewsInteractorProtocol {
     weak var delegate: NewsInteractorDelegate?
     
     func getNews(request: NewsRequest) {
-        let url = "\(Constants.baseURL)top-headlines"
-        let params: [String: Any] = ["sources": request.sources, "pageSize": request.pageSize, "page": request.page, "q": request.q]
+        let url = "\(Constants.baseURL)everything"
+        let params: [String: Any] = ["sources": request.sources ?? "", "pageSize": request.pageSize, "page": request.page, "q": request.q, "language": request.language]
         
         RestApiServices.shared.request(url: url, params: params) { [weak self] (newsResult: NewsModel) in
             self?.delegate?.getNewsDidSuccess(result: newsResult)

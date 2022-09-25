@@ -39,7 +39,7 @@ class NewsPresenter: NewsPresenterProtocol {
     func fetchNews() {
         wireframe.setLoadingIndicator(isHidden: false)
         if let source = source.id {
-            let request = NewsRequest(sources: source, pageSize: newsPerPage, page: currentPage, q: searchQuery)
+            let request = NewsRequest(pageSize: newsPerPage, page: currentPage, q: searchQuery, language: "en", sources: source)
             interactor.getNews(request: request)
         }
     }

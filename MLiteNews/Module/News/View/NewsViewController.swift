@@ -22,12 +22,12 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         presenter?.fetchNews()
-        title = "News from \(presenter?.source.name ?? "")"
-        setupSearchController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        title = "News from \(presenter?.source.name ?? "")"
+        setupSearchController()
     }
     
     // MARK: - Setup
@@ -43,13 +43,14 @@ class NewsViewController: UIViewController {
     
     private func setupSearchController() {
         searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
 
 }
 
-extension NewsViewController: UISearchResultsUpdating {
+extension NewsViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.doingSearch(_:)), object: nil)
         self.perform(#selector(self.doingSearch), with: nil, afterDelay: 1)
@@ -57,12 +58,19 @@ extension NewsViewController: UISearchResultsUpdating {
     
     @objc func doingSearch(_ searchBar: UISearchBar) {
         guard let text = searchController.searchBar.text else { return }
+        if !text.isEmpty {
+            presenter?.resetData()
+            presenter?.searchQuery = text
+            presenter?.fetchNews()
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        presenter?.searchQuery = ""
         presenter?.resetData()
-        presenter?.searchQuery = text
         presenter?.fetchNews()
     }
 }
-
 
 // MARK: - View Protocol
 extension NewsViewController: NewsViewProtocol {

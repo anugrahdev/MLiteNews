@@ -31,15 +31,23 @@ class HomeWireframe: HomeWireframeProtocol {
     }
     
     func setLoadingIndicator(isHidden: Bool) {
-        
+        if isHidden {
+            controller?.homeTableView.hideLoading()
+        } else {
+            controller?.homeTableView.showLoading()
+        }
     }
     
     func showNoInternetAlert() {
-        
+        let alert = UIAlertController(title: StringResources.noInternetTitle, message: StringResources.noInternetMsg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: StringResources.backText, style: .default, handler: nil))
+        self.controller?.present(alert, animated: true)
     }
     
     func showErrorAlert(_ message: String) {
-        
+        let alert = UIAlertController(title: StringResources.errorLoadData, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: StringResources.backText, style: .default, handler: nil))
+        self.controller?.present(alert, animated: true)
     }
     
     func pushToSourcesView(category: String) {

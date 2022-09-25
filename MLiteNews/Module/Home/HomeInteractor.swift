@@ -13,10 +13,10 @@ class HomeInteractor: HomeInteractorProtocol {
     // MARK: Properties
     weak var delegate: HomeInteractorDelegate?
     
-    func getHomeNews() {
+    func getHomeNews(request: NewsRequest) {
         let getHomeNewsUrl = "\(Constants.baseURL)top-headlines"
-        let params: [String: Any] = ["country": "id"]
-        
+        let params: [String: Any] = ["pageSize": request.pageSize, "page": request.page, "q": request.q, "language": request.language]
+
         RestApiServices.shared.request(url: getHomeNewsUrl, params: params) { [weak self] (newsResult: NewsModel) in
             self?.delegate?.getHomeNewsDidSuccess(result: newsResult)
         } failure: { [weak self] error in

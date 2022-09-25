@@ -19,20 +19,20 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="I9Z-Nf-XdU">
-                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="I9Z-Nf-XdU">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="I9Z-Nf-XdU" secondAttribute="bottom" id="HKK-lR-6vV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="I9Z-Nf-XdU" secondAttribute="trailing" id="Kpd-hz-PlR"/>
                 <constraint firstItem="I9Z-Nf-XdU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="WLN-vg-BfE"/>
                 <constraint firstItem="I9Z-Nf-XdU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gOl-bx-06g"/>
-                <constraint firstAttribute="bottom" secondItem="I9Z-Nf-XdU" secondAttribute="bottom" id="icm-bW-lzy"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="132"/>
+            <point key="canvasLocation" x="131.8840579710145" y="131.91964285714286"/>
         </view>
     </objects>
     <resources>

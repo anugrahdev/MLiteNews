@@ -16,3 +16,8 @@ other features:
 - all page with list have the swipe down to refresh
 
 Unit test coverage for all Presenter.
+
+Note: 
+you can change the API KEY with yours in the Constants.swift file.
+Thanks
+Cheers

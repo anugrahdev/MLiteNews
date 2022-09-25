@@ -14,3 +14,5 @@ other features:
 - all page have the empty state view when the result is empty
 - the app can detect if your device doesnt have the internet connection and show the alert
 - all page with list have the swipe down to refresh
+
+Unit test coverage for all Presenter.

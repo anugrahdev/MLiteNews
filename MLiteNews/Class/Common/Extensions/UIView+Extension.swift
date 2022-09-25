@@ -30,4 +30,11 @@ extension UIView {
         mask.path = path.cgPath
         layer.mask = mask
     }
+    
+    func loadNib() -> UIView {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: String(describing: self.classForCoder), bundle: bundle)
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        return view
+    }
 }

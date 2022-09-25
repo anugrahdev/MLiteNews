@@ -32,11 +32,12 @@ class NewsPresenter: NewsPresenterProtocol {
         self.newsArticleList = []
         self.totalPage = 1
         self.currentPage = 1
-        self.isLoadData = false
+        self.isLoadData = true
         self.searchQuery = ""
     }
     
     func fetchNews() {
+        wireframe.setLoadingIndicator(isHidden: false)
         if let source = source.id {
             let request = NewsRequest(sources: source, pageSize: newsPerPage, page: currentPage, q: searchQuery)
             interactor.getNews(request: request)
@@ -64,17 +65,17 @@ extension NewsPresenter: NewsInteractorDelegate {
             totalPage = Int(dataCurrentPage)
         }
         DispatchQueue.main.async { [weak self] in
+            self?.wireframe.setLoadingIndicator(isHidden: true)
             self?.view?.reloadData()
         }
         isLoadData = false
     }
     
     func serviceRequestDidFail(_ error: NSError) {
-        
-    }
-    
-    func userUnAuthorized() {
-        
+        DispatchQueue.main.async { [weak self] in
+            self?.wireframe.setLoadingIndicator(isHidden: true)
+            self?.wireframe.showErrorAlert(error.localizedDescription)
+        }
     }
     
 }

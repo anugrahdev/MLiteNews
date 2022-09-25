@@ -73,7 +73,15 @@ extension NewsViewController: NewsViewProtocol {
 
 extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter?.newsArticleList?.count ?? 0
+        if let count = presenter?.newsArticleList?.count, let isLoading = presenter?.isLoadData {
+            if count == 0 && !isLoading {
+                tableView.setEmptyView(title: "No result found")
+            } else {
+                tableView.restore()
+            }
+            return count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

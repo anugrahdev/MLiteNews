@@ -38,6 +38,7 @@ class SourcesViewController: UIViewController {
     private func setupSearchController() {
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
 }
@@ -50,9 +51,7 @@ extension SourcesViewController: UISearchResultsUpdating {
     
     @objc func doingSearch(_ searchBar: UISearchBar) {
         guard let text = searchController.searchBar.text else { return }
-//        presenter?.resetData()
-//        presenter?.searchQuery = text
-//        presenter?.fetchNews()
+        presenter?.filterSource(query: text.lowercased())
     }
 }
 

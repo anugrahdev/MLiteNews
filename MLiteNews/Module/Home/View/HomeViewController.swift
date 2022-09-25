@@ -33,6 +33,9 @@ class HomeViewController: UIViewController {
     private func setupView() {
         setupTableView()
         setupRefreshView()
+        homeTableView.backgroundColor = .clear
+        homeTableView.backgroundView = nil
+        homeTableView.isOpaque = false
         NotificationCenter.default.addObserver(self, selector: #selector(showNoInternetAlert), name: .getNotification(with: .offline), object: nil)
     }
     
@@ -141,7 +144,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        45
+        65
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -22,7 +22,6 @@ class DetailWireframe: DetailWireframeProtocol {
         let interactor = DetailInteractor()
         let presenter = DetailPresenter(interactor: interactor, wireframe: self, url: url, title: title)
         let view = DetailViewController()
-        interactor.delegate = presenter
         controller = view
         view.presenter = presenter
         presenter.view = view
@@ -30,20 +29,20 @@ class DetailWireframe: DetailWireframeProtocol {
         return view
     }
     
-    func pushLogin() {
-        
-    }
-    
     func setLoadingIndicator(isHidden: Bool) {
-        
+       
     }
     
     func showNoInternetAlert() {
-        
+        let alert = UIAlertController(title: StringResources.noInternetTitle, message: StringResources.noInternetMsg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: StringResources.backText, style: .default, handler: nil))
+        self.controller?.present(alert, animated: true)
     }
     
     func showErrorAlert(_ message: String) {
-        
+        let alert = UIAlertController(title: StringResources.errorLoadData, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: StringResources.backText, style: .default, handler: nil))
+        self.controller?.present(alert, animated: true)
     }
 
 }

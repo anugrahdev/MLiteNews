@@ -1,0 +1,71 @@
+{
+    "status": "ok",
+    "totalResults": 4472,
+    "articles": [
+        {
+            "source": {
+                "id": "abc-news",
+                "name": "ABC News"
+            },
+            "author": "VADIM GHIRDA and ANDREEA ALEXANDRU Associated Press",
+            "title": "AP PHOTOS: Roman era brought to life at Romanian festival",
+            "description": "The clatter of shields and battle cries filled the misty air as warriors lifted their swords. Nearby, gladiators fought each other for their lives. \n\nA festival that featured historic reenactments brought the ancient Roman era back to life this month near a s…",
+            "url": "https://abcnews.go.com/Entertainment/wireStory/ap-photos-roman-era-brought-life-romanian-festival-90465881",
+            "urlToImage": "https://s.abcnews.com/images/Entertainment/WireAP_c329adfc7676463b998de66c7544dd71_16x9_992.jpg",
+            "publishedAt": "2022-09-25T06:39:58Z",
+            "content": "RESCA, Romania -- The clatter of shields and battle cries filled the misty air as warriors lifted their swords. Nearby, gladiators fought each other for their lives. \r\nA festival that featured histor… [+2123 chars]"
+        },
+        {
+            "source": {
+                "id": "abc-news",
+                "name": "ABC News"
+            },
+            "author": "DANICA KIRKA Associated Press",
+            "title": "Dave Caulkin, Associated Press photographer, dies at 77",
+            "description": "Dave Caulkin, a retired Associated Press photographer who captured the iconic moment when ice dancers Jayne Torvill and Christopher Dean won the 1984 Olympic gold medal, has died",
+            "url": "https://abcnews.go.com/International/wireStory/dave-caulkin-press-photographer-dies-77-90465493",
+            "urlToImage": "https://s.abcnews.com/images/International/WireAP_48dbf9ea32264956a5caa068b31d5a28_16x9_992.jpg",
+            "publishedAt": "2022-09-25T06:31:28Z",
+            "content": "LONDON -- Dave Caulkin, a retired Associated Press photographer who captured the iconic moment when ice dancers Jayne Torvill and Christopher Dean won the 1984 Olympic gold medal, has died. He was 77… [+4814 chars]"
+        },
+        {
+            "source": {
+                "id": "abc-news",
+                "name": "ABC News"
+            },
+            "author": "The Associated Press",
+            "title": "Powerful typhoon headed for north Philippines strengthens",
+            "description": "A powerful typhoon has shifted and strengthened in an “explosive intensification” as it approached the northeastern Philippines",
+            "url": "https://abcnews.go.com/International/wireStory/powerful-typhoon-headed-north-philippines-strengthens-90463805",
+            "urlToImage": "https://s.abcnews.com/images/US/abc_news_default_2000x2000_update_16x9_992.jpg",
+            "publishedAt": "2022-09-25T05:57:52Z",
+            "content": "MANILA, Philippines -- A powerful typhoon shifted and strengthened in an explosive intensification Sunday, prompting evacuations from high-risk villages as it approached the northeastern Philippines … [+2131 chars]"
+        },
+        {
+            "source": {
+                "id": "abc-news",
+                "name": "ABC News"
+            },
+            "author": "ANTHONY IZAGUIRRE Associated Press",
+            "title": "Florida monitors a growing Tropical Storm Ian in Caribbean",
+            "description": "Authorities and residents in Florida are keeping a cautious eye on Tropical Storm Ian as it rumbles through the Caribbean, expected to continue gaining strength and become a major hurricane in the coming days on a forecast track toward the state",
+            "url": "https://abcnews.go.com/US/wireStory/florida-monitors-growing-tropical-storm-ian-caribbean-90463139",
+            "urlToImage": "https://s.abcnews.com/images/US/WireAP_cb0b3c22cca34260ab173bb237825ecf_16x9_992.jpg",
+            "publishedAt": "2022-09-25T05:13:43Z",
+            "content": "TALLAHASSEE, Fla. -- Authorities and residents in Florida were keeping a cautious eye on Tropical Storm Ian as it rumbled through the Caribbean on Sunday, expected to continue gaining strength and be… [+2687 chars]"
+        },
+        {
+            "source": {
+                "id": "abc-news",
+                "name": "ABC News"
+            },
+            "author": "FRANCES D'EMILIO and NICOLE WINFIELD Associated Press",
+            "title": "Italians vote in election that could take far-right to power",
+            "description": "Italians are voting in a national election coming at a critical time for Europe",
+            "url": "https://abcnews.go.com/International/wireStory/italians-vote-election-power-90463025",
+            "urlToImage": "https://s.abcnews.com/images/International/WireAP_e393b48026b34696a6578150ae1f9856_16x9_992.jpg",
+            "publishedAt": "2022-09-25T05:10:13Z",
+            "content": "ROME -- Italians were voting on Sunday in an election that could move the countrys politics sharply toward the right during a critical time for Europe, with war in Ukraine fueling skyrocketing energy… [+3245 chars]"
+        }
+    ]
+}

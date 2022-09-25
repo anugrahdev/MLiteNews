@@ -25,15 +25,3 @@ class DetailPresenter: DetailPresenterProtocol {
         self.title = title
     }
 }
-
-extension DetailPresenter: DetailInteractorDelegate {
-    
-    func serviceRequestDidFail(_ error: NSError) {
-        
-    }
-    
-    func userUnAuthorized() {
-        
-    }
-    
-}

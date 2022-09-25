@@ -94,7 +94,7 @@ extension CategoryTableViewCell: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 0, left: 15, bottom: 0, right: 15)
+        return .init(top: 0, left: 15, bottom: 15, right: 15)
     }
     
 }

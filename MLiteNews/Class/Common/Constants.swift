@@ -12,6 +12,6 @@ struct Constants {
     static let baseURL: String = {
         return "https://newsapi.org/v2/"
     }()
-    static let API_KEY = "51683d9422a64216bfa9d2dfcceeda7d"
+    static let API_KEY = "187073147b2b403080a088a76287d02f"
     
 }

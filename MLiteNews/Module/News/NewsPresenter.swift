@@ -16,7 +16,7 @@ class NewsPresenter: NewsPresenterProtocol {
     weak var view: NewsViewProtocol?
     let interactor: NewsInteractorProtocol
     let wireframe: NewsWireframeProtocol
-    let newsPerPage = 5
+    let newsPerPage = 10
     
     var newsArticleList: [ArticleModel]?
     var source: SourceModel

@@ -19,7 +19,7 @@ class HomePresenter: HomePresenterProtocol {
     var categoryList: [CategoryModel]
     var searchQuery: String
     var currentPage: Int
-    let newsPerPage = 5
+    let newsPerPage = 10
     var totalPage: Int
     var isLoadData: Bool
 
